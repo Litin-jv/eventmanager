@@ -1,0 +1,31 @@
+version: "3"
+services:
+  backend:
+    build: ./event-backend
+    container_name: event-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGODB_URI=mongodb+srv://litinjv:RzoYd6fjfQAarJzQ@eventmanager.ihdvylk.mongodb.net/event-management?retryWrites=true&w=majority&appName=eventmanager
+
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./event-frontend
+    container_name: event-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
