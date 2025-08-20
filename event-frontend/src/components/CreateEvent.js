@@ -61,7 +61,7 @@ const CreateEvent = () => {
     try {
       const eventData = {
         ...formData,
-        date: formData.date.toISOString()
+        date: formData.date.format('DD/MM/YYYY')
       };
 
       await axios.post('http://localhost:5000/api/events', eventData);

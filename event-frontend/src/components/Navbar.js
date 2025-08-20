@@ -22,6 +22,10 @@ const Navbar = () => {
     navigate('/events');
   };
 
+  const handleProfile = () => {
+    navigate('/profile');
+  };
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -45,6 +49,13 @@ const Navbar = () => {
             onClick={handleAddEvent}
           >
             Add Event
+          </Button>
+          <Button 
+            color="inherit" 
+            variant="outlined"
+            onClick={handleProfile}
+          >
+            Profile
           </Button>
           <Button 
             color="inherit" 
